@@ -11,9 +11,11 @@ function deleteHandler(i) {
     .then((res) => res.json())
     .then((result) => {
       if (result.status) {
-        console.log(`result.status`, result.status)
+        console.log(`result.status`, result.status);
         location.reload();
       }
     })
-    .catch((err) => console.log(`err`, err));
+    .catch((err) => {
+      console.log(`err`, err);
+    });
 }

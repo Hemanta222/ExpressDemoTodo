@@ -17,9 +17,9 @@
             <button type="submit">Add Item</button>
         </form>
         <ul>
-            <% todos.map((todo,i)=> {%>
+            <% if(todos && todos.length>0) todos.map((todo,i)=> {%>
 
-                <li onclick="deleteHandler(<%= todo.id %>)" id=<%= todo.id %> >
+                <li onclick="deleteHandler('<%= todo._id %>')" id=<%=todo._id %> >
                     <%= todo.item %>
                 </li>
                 <% }) %>
