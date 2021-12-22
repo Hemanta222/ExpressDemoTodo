@@ -1,2 +1,4 @@
 # ExpressDemoTodo
-ExpressJs,EJS,Todo-App
+Node Framework - ExpressJs
+TemplateEngine - EJS
+dev dependency - nodemon
