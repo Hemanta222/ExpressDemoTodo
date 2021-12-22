@@ -30,3 +30,7 @@ module.exports = function (app) {
     res.status(200).json({ status: true });
   });
 };
+app.put('/todo',(req,res)=>{
+  console.log(`edit todo`)
+})
+//adding remote origin
