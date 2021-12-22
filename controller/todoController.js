@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 // const Objectid =  mongoose.Types.Objectid;
 const uri =
-  "mongodb+srv://test:r3JeNK50FgK973RD@cluster0.zv0wd.mongodb.net/todo-db?retryWrites=true&w=majority";
+  "mongodb+srv://<username>:<password><cluster_uri>/<bd>?retryWrites=true&w=majority";
 mongoose.connect(uri);
 const todoSchema = new mongoose.Schema({
   item: String,
@@ -11,11 +11,7 @@ mongoose.pluralize(null);
 const Todo = mongoose.model("todo-item", todoSchema);
 
 module.exports = function (app) {
-  let data = [
-    { item: "Get Milk", id: 1 },
-    { item: "Make Food", id: 2 },
-    { item: "Read Book", id: 3 },
-  ];
+
 
   //get list of todo items
   app.get("/todo", async (req, res) => {
