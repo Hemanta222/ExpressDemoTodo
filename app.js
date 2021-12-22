@@ -1,45 +1,40 @@
-const http = require("http");
-const fs = require("fs");
-const server = http.createServer((req, res) => {
-  console.log(`req.url`, req.url);
-  if (req.url === "/api") {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(
-      JSON.stringify({
-        name: "Sunu",
-        address: "Latakta",
-      })
-    );
-  }
-  res.writeHead(200, { "Content-Type": "text/html" });
-  const rightStream = fs.createReadStream(
-    __dirname + "/public/index.html",
-    "utf8"
-  );
-  rightStream.pipe(res);
-  //   res.end("hi google");
-});
+const express = require("express");
+const path = require("path");
+const app = express();
+const todoController = require("./controller/todoController");
+//setting view engine i.e ejs, pug,handlebar
+app.set("view engine", "ejs");
+// Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({ extended: false }));
+// Parse JSON bodies (as sent by API clients)
+app.use(express.json());
+//serving static files
+app.use("/public", express.static(path.join(__dirname, "public")));
 
-server.listen(3000, () => {
+app.get("/", (req, res) => {
+  res.render("index");
+});
+app.get("/contact", (req, res) => {
+  res.render("contact", { data: req.query });
+});
+app.post("/contact", (req, res) => {
+  console.log(`req.body`, req.body);
+  res.json(req.body);
+  // res.redirect();
+  // res.render("contact", { data: req.query });
+});
+app.get("/user/:name", (req, res) => {
+  res.status(200).send(`<h3>Hi,${req.params.name} </h3>`);
+});
+app.get("/profile", (req, res) => {
+  console.log(`req.query`, req.query);
+  const data = req.query;
+  res.render("profile", { data });
+});
+app.get("/readme", (req, res) => {
+  res.sendFile(__dirname + "/readme.html");
+});
+todoController(app);
+app.listen(3000, () => {
   console.log(`http://localhost:3000`);
 });
-
-// const strem = fs.createReadStream(__dirname + "/readme.html", "utf8");
-// const wrStream = fs.createWriteStream(__dirname + "/writeFile.html");
-// strem.on("data", (chunk) => {
-//   console.log(`new data read`);
-//   console.log(chunk);
-//   wrStream.write(chunk);
-// });
-
-function getDate() {
-  console.log(`call first`);
-
-  setInterval(() => {
-    console.log(`call inside callback`);
-    console.log(`object`, new Date());
-  }, 2000);
-  console.log(`call last`);
-}
-
-// getDate();

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do home</title>
+    <link rel="stylesheet" href="../public/css/todo.css">
+</head>
+
+<body>
+    <div class="root">
+        <h1 class="todoHeader">To-do App</h1>
+        <form action="/todo" method="post">
+            <input type="text" name="todoItem" id="todoItem" placeholder="Enter new item">
+            <button type="submit">Add Item</button>
+        </form>
+        <ul>
+            <% todos.map((todo,i)=> {%>
+
+                <li onclick="deleteHandler(<%= todo.id %>)" id=<%= todo.id %> >
+                    <%= todo.item %>
+                </li>
+                <% }) %>
+
+        </ul>
+    </div>
+
+    <script src="../public/js/todo.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: aquamarine;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: azure;
+}
+
+h1 {
+  font-size: 48px;
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+  text-align: center;
+}
+.App {
+  background-color: aquamarine;
+  color: azure;
+  font-size: 16px;
+}
+.Contact {
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 255, 0.205);
+  padding: 8px;
+}
+div.Contact > form > * {
+  box-sizing: border-box;
+  width: 300px;
+  margin: 4px;
+}
+footer {
+  font-size: 14px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  background-color: cadetblue;
+  line-height: 16px;
+  width: 100%;
+}
